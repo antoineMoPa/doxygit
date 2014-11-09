@@ -31,7 +31,7 @@ File.open("#{tmp_dir}/config", 'r') do |file|
       config_file << "#{default_option[0]}="
       
       new_params.each do |option|
-        if default_option[0].strip == option[0]
+        if default_option[0].strip == option[0].to_s.upcase
           #first found is the value assigned
           config_file << " #{option[1]}"
           break
