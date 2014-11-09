@@ -1,7 +1,30 @@
 doctype html
 head
-  link(rel="stylesheet" type="text/css" href="assets/css/main.css")
-body
-  header
-  h1= "Test"
-  h2 test
+  head
+    link(rel="stylesheet" type="text/css" href="assets/css/main.css")
+    title Doxygit
+  body
+    .header
+      h3
+        | Doxygit
+    .body
+      .home
+        h2.punch-line
+          span
+            | Your documentation online in one click
+          span.happy-face
+            | :D
+        form(accept-charset='UTF-8', action='/newdoc', method='post')
+          div(style='margin: 0; padding: 0; display: inline;')
+            input(name='utf8', type='hidden', value='✓')
+            input(name='authenticity_token', type='hidden', value='JfrVPNUWOEPaENPQ9MdoF75phKEjBmzLcJjoxWR9LZA=')
+          .form-group
+            label.repolabel
+              | Enter a git repo url
+            .repo-input-group
+              input.form-control.repo-input(name='repositoryURL', placeholder='https://github.com/AntoineMoPa/doxygit.git')
+              i.repo-input-validation-icon.fa
+            .get-doc-cont
+              button.btn.btn-primary.get-doc
+                | Build documentation
+    .footer

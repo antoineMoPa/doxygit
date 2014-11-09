@@ -1,13 +1,14 @@
 var express  = require('express');
-var jade = require('jade');
 var fs = require('fs');
+var templates = require('./lib/templates.js');
 var app = express();
 
+var templater = templates();
 
 app.get("/",function(req,res){
-    var html = jade.renderFile("views/home.jade");
+    var template = templater.get("views/home.jade")
     
-    res.send(html);
+    res.send(template.run());
 });
 
 
