@@ -31,5 +31,8 @@ tramp
 # cask packages
 .cask/
 
-# On ignore les user-data
+# ignoring user-data
 /www/data/**
+
+# ignoring tmp foler
+/tmp/**
