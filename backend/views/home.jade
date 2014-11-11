@@ -1,10 +1,20 @@
+- staticURL = "http://127.0.0.1/doxygitStatic"
 doctype html
 head
-  head
-    link(rel="stylesheet" type="text/css" href="assets/css/main.css")
-    title Doxygit
-  body
-    p= dude
+  link(
+      rel="stylesheet" 
+      type="text/css" 
+      href=staticURL+"/assets/css/ui-general.css"
+  )
+
+  link(
+      rel="stylesheet" 
+      type="text/css" 
+      href=staticURL+"/assets/css/main.css"
+  )
+
+  title Doxygit
+body
     .header
       h3
         | Doxygit
@@ -12,7 +22,7 @@ head
       .home
         h2.punch-line
           span
-            | Your documentation online in one click
+            | Your documentation online in a click
           span.happy-face
             | :D
         form(accept-charset='UTF-8', action='/newdoc', method='post')
@@ -23,7 +33,9 @@ head
             label.repolabel
               | Enter a git repo url
             .repo-input-group
-              input.form-control.repo-input(name='repositoryURL', placeholder='https://github.com/AntoineMoPa/doxygit.git')
+              .bookie
+                img.bookie(src = staticURL+"/assets/images/bookie.svg")
+                input.form-control.repo-input(name='repositoryURL', placeholder='https://github.com/AntoineMoPa/doxygit.git')
               i.repo-input-validation-icon.fa
             .get-doc-cont
               button.btn.btn-primary.get-doc
