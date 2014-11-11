@@ -13,6 +13,7 @@ module.exports = function templates(){
             html: html
         }
         function run(data){
+            dude = "dede"
             return this.html;
         }
     }
