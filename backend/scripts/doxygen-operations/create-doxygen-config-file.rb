@@ -5,7 +5,7 @@
 require 'fileutils'
 
 #root = ENV['DOXYGIT_ROOT']
-tmp_dir = "/home/doxygit/backend/tmp"
+tmp_dir = "#{ENV['DOXYGIT_ROOT']}/backend/tmp"
 
 #trying to create tmp directory if missing
 if !File.directory?(tmp_dir)
