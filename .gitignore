@@ -35,4 +35,4 @@ tramp
 /www/data/**
 
 # ignoring tmp foler
-/tmp/**
+/backend/tmp/**
