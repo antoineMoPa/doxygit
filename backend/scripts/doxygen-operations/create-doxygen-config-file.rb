@@ -7,12 +7,12 @@ require 'fileutils'
 #checking proper configuration
 if ENV['DOXYGIT_ROOT'].nil?
   puts "Environnement variable DOXYGIT_ROOT must be set."
-  exit
+  exit 1
 end
 
 if ENV['DOXYGIT_TMP'].nil?
   puts "Environnement variable DOXYGIT_TMP must be set."
-  exit
+  exit 1
 end
 
 tmp_dir = "#{ENV['DOXYGIT_ROOT']}/backend/tmp#{ENV['DOXYGIT_TMP']}"

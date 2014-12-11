@@ -1,7 +1,7 @@
 
 if ARGV[0].nil?
   puts "The first argument is the temp directory's unique id"
-  exit
+  exit 1
 end
 
 ENV['DOXYGIT_TMP'] = ARGV[0]
