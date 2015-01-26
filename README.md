@@ -1,4 +1,3 @@
 doxygit
 =======
-Environment variable :
-DOXYGIT_ROOT=/path/to/doxygit
+A doxygen based tool to create the documentation of your project from its git repository.
