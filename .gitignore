@@ -36,3 +36,5 @@ tramp
 
 # ignoring tmp foler
 /backend/tmp/**
+
+node_modules

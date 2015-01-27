@@ -1,0 +1,11 @@
+{
+    "name": "doxygit",
+    "version": "0.0.0",
+    "description": "doxygen, git and the internet",
+    "dependencies": {
+        "express": "*",
+        "shortid": "*",
+        "jade": "*",
+        "body-parser": "*"
+    }
+}
