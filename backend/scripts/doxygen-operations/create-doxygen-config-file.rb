@@ -1,58 +1,70 @@
+#TODO app root dir from environnement variable?
+#     generate without comments
+#     unique directory per request
 
-#app root dir from config file?
+require 'fileutils'
 
-tmp_dir = "/home/doxygit/app/doxygit/backend/tmp"
-
-if !File.directory?(tmp_dir)
-  Dir.mkdir(tmp_dir)
+#checking proper configuration
+if ENV['DOXYGIT_ROOT'].nil?
+  puts "Environnement variable DOXYGIT_ROOT must be set."
+  exit 1
 end
 
+if ENV['DOXYGIT_TMP'].nil?
+  puts "Environnement variable DOXYGIT_TMP must be set."
+  exit 1
+end
+
+tmp_dir = "#{ENV['DOXYGIT_ROOT']}/backend/tmp#{ENV['DOXYGIT_TMP']}"
+
+#trying to create tmp directory if missing
+if !File.directory?(tmp_dir)
+  FileUtils.mkdir_p tmp_dir
+end
+
+Dir.chdir tmp_dir
+
 #cleaning tmp directory
-`rm -rf #{tmp_dir}/*`
+FileUtils.rm_rf(Dir.glob('*'))
 
 #creating default config file
-`doxygen -g #{tmp_dir}/config`
+`doxygen -g config`
 
 #storing config options to modify
-new_params = Array.new
+new_options = Array.new
 ARGV.each do |arg|
-  new_params.push(arg.scan(/([A-Z_]*)=(.*)/)[0])
+  new_options.push(arg.scan(/([A-Za-z_]*)=(.*)/)[0])
 end
 
 #loading file in memory and adjusting config values
 config_file = ""
-File.open("#{tmp_dir}/config", 'r') do |file|
+File.open("config", 'r') do |file|
   while line = file.gets
-    #if the line isn't a comment
+    #if the line is a comment or empty
     if line == "\n" || line[0] == "#"
-      config_file << "#{line}"
+      config_file << line
     else
       default_option = line.scan(/(.*)=(.*)/)[0]
       config_file << "#{default_option[0]}="
-      
-      new_params.each do |option|
-        if default_option[0].strip == option[0]
+
+      #looking for new requested option match
+      new_options.each do |option|
+        if default_option[0].strip == option[0].to_s.upcase
           #first found is the value assigned
-          config_file << " #{option[1]}"
+          config_file << " #{option[1]}\n"
           break
         end
       end
 
       #if option isn't specified, use default value
       if config_file[-1, 1] == "="
-        config_file << "#{default_option[1]}"
+        config_file << default_option[1] << "\n"
       end
     end
   end
 end
 
 #updating file
-File.open("#{tmp_dir}/config", 'w') do |file|
+File.open("config", 'w') do |file|
     file.write(config_file)
 end
-
-#TODO set
-#input
-#recursive yes
-#output directory
-#javadoc_style
