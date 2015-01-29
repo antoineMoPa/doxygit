@@ -5,17 +5,12 @@
 require 'fileutils'
 
 #checking proper configuration
-if ENV['DOXYGIT_ROOT'].nil?
-  puts "Environnement variable DOXYGIT_ROOT must be set."
+if ENV['DOXYGIT_SHORTID'].nil?
+  puts "Environnement variable DOXYGIT_SHORTID must be set."
   exit 1
 end
 
-if ENV['DOXYGIT_TMP'].nil?
-  puts "Environnement variable DOXYGIT_TMP must be set."
-  exit 1
-end
-
-tmp_dir = "#{ENV['DOXYGIT_ROOT']}/backend/tmp#{ENV['DOXYGIT_TMP']}"
+tmp_dir = "tmp/#{ENV['DOXYGIT_SHORTID']}"
 
 #trying to create tmp directory if missing
 if !File.directory?(tmp_dir)
