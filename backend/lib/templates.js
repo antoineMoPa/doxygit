@@ -5,15 +5,13 @@ module.exports = function templates(){
     return {
         get: get
     }
-    
-    function get(path){
-        var html = jade.renderFile(path);
+    function get(path,data){
+        var html = jade.renderFile(path,data);
         return {
             run: run,
             html: html
         }
         function run(data){
-            dude = "dede"
             return this.html;
         }
     }

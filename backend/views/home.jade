@@ -1,4 +1,4 @@
-- staticURL = "http://127.0.0.1/doxygitStatic"
+- staticURL = CONFIG.staticURL
 doctype html
 head
   link(
@@ -35,7 +35,7 @@ body
             .repo-input-group
               .bookie
                 img.bookie(src = staticURL+"/assets/images/bookie.svg")
-                input.form-control.repo-input(name='repositoryURL', placeholder='https://github.com/AntoineMoPa/doxygit.git')
+                input.form-control.repo-input(name='repositoryURL', placeholder='git@github.com:AntoineMoPa/doxygit.git')
               i.repo-input-validation-icon.fa
             .get-doc-cont
               button.btn.btn-primary.get-doc

@@ -8,18 +8,20 @@ var path = require('path');
 var templater = templates();
 var shortId = require('shortid');
 
+var CONFIG = require("./config");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/",function(req,res){
-    var template = templater.get("views/home.jade")
+    var data = {CONFIG: CONFIG}
+    var template = templater.get("views/home.jade", data)
     
     res.send(template.run());
 });
 
 app.post("/newdoc",function(req,res){
-    var template = templater.get("views/newdoc.jade");
     var repo = req.body.repositoryURL;
-    
+    console.log("REPO: "+repo)
     /* @TODO: validate my validation */
     if(repo.match(/^[a-zA-Z0-9\-]+@[a-zA-Z0-9\.\-\:\/]+$/)){
         createRepo(repo, success);
@@ -31,13 +33,15 @@ app.post("/newdoc",function(req,res){
     
     function success(shortId){
         //change location in header and serve html directly?
-        res.redirect(301, '/doxygitStatic/data/'+ shortId);
+        redirect_url = CONFIG.staticURL;
+        redirect_url += "/data/" + shortId
+        res.redirect(301, redirect_url);
     }
 });
 
 function createRepo(repo, callback){
     // unique repo id
-    var newShortId = shortId.generate()
+    var newShortId = shortId.generate();
     /*
       Build shell command that passes the shortid and the repo url
     */
@@ -50,10 +54,11 @@ function createRepo(repo, callback){
     
     child_process.execFile(command, args, function (err, result) {
         //todo check err value
+        console.log(result);
         callback(newShortId);
     });    
 }
 
-var server = app.listen(4000,function(){
-    
+var server = app.listen(CONFIG.port, function(){
+    console.log("Listening to " + CONFIG.nodeURL)
 });
