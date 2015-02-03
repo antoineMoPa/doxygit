@@ -4,6 +4,7 @@ var templates = require('./lib/templates.js');
 var app = express();
 var bodyParser = require("body-parser");
 var child_process = require("child_process");
+var path = require('path');
 var templater = templates();
 var shortId = require('shortid');
 
@@ -25,29 +26,31 @@ app.post("/newdoc",function(req,res){
     } else if(repo.match(/^http(s)?:\/\/[a-zA-Z0-9\.\-\:\/]+$/)){    
         createRepo(repo, success);
     } else {
-        res.send("fail")
+        res.send("fail");
     }
     
-    function success(){
-        res.send(template.run());        
+    function success(shortId){
+        //change location in header and serve html directly?
+        res.redirect(301, '/doxygitStatic/data/'+ shortId);
     }
 });
 
-function createRepo(url, callback){
+function createRepo(repo, callback){
     // unique repo id
     var newShortId = shortId.generate()
     /*
       Build shell command that passes the shortid and the repo url
     */
-    var command = '/usr/bin/ruby';
+    var command = 'ruby';
     var args = [
-        "scripts/git-operations/create-git-repo.rb",
+        "scripts/basic-setup.rb",
         newShortId,
         repo
     ];
     
     child_process.execFile(command, args, function (err, result) {
-        callback();
+        //todo check err value
+        callback(newShortId);
     });    
 }
 
