@@ -14,6 +14,10 @@ head
   )
 
   title Doxygit
+  meta(
+      name="description"
+      content="Generate doxygen documentation from code comments."
+  )
 body
     .header
       h3
@@ -28,14 +32,12 @@ body
         - newdocURL = CONFIG.nodeURL + '/newdoc'
         form(accept-charset='UTF-8', action=newdocURL, method='post')
           div(style='margin: 0; padding: 0; display: inline;')
-            input(name='utf8', type='hidden', value='✓')
-            input(name='authenticity_token', type='hidden', value='JfrVPNUWOEPaENPQ9MdoF75phKEjBmzLcJjoxWR9LZA=')
           .form-group
             label.repolabel
               | Enter a git repo url
             .repo-input-group
               .bookie
-                img.bookie(src = staticURL+"/assets/images/bookie.svg")
+                img.bookie(src = staticURL+"/assets/images/bookie-black-bg.svg")
                 input.form-control.repo-input(name='repositoryURL', placeholder='git@github.com:AntoineMoPa/doxygit.git')
               i.repo-input-validation-icon.fa
             .get-doc-cont

@@ -5,38 +5,45 @@ h1,h2,h3,h4,h5,h6,p,label{font-family:'Open Sans';}
 body {
   padding: 0;
   margin: 0;
+  background: #000;
+  background:#000000;
+  color: #fff;
 }
 
 .header {
   height: 70px;
-  background: #eee;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3), 0 -12px 12px -12px rgba(255, 255, 255, 0.4) inset;
+  background: #3AF;
+  border-bottom: 3px solid #225D9F;
 }
+
 .header h3 {
   line-height: 70px;
   margin-top: 0;
   margin-left: 10px;
   font-size: 30px;
   font-weight: 700;
-  text-shadow: 2px 2px 0px #fff, 3px 3px 2px rgba(0, 0, 0, 0.3);
+  color:#fff;
 }
 
 .footer {
-  background: #eee;
+  background: #3AF;
   min-height: 100px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3), 0 12px 12px -12px rgba(255, 255, 255, 0.4) inset;
+  margin-top: 100px;
+  border-top: 3px solid #225D9F;
 }
 
 .home {
   text-align: center;
+  color:#fff;
 }
+
 .home .punch-line {
   display: inline-block;
   transform: rotate(-2deg);
   font-size: 40px;
   font-weight: 700;
   margin-top: 100px;
-  border: 8px solid #eee;
+  border: 8px solid #ccc;
   padding: 10px;
 }
 .home .punch-line .happy-face {
@@ -63,7 +70,7 @@ body {
   width: 200px;
   text-align: center;
   margin: auto;
-  transition: 0.9s;
+  transition: 0.2s;
 }
 .home form .get-doc-cont .get-doc {
   font-size: 20px;
@@ -73,7 +80,7 @@ body {
   padding: 20px;
 }
 .home form .get-doc-cont:hover {
-  transform: rotateX(360deg) rotateZ(-3deg);
+  transform: scaleX(1.03) scaleY(1.03);
 }
 
 /* HOME */
