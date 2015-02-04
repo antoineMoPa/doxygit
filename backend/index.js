@@ -1,22 +1,28 @@
 var express  = require('express');
 var fs = require('fs');
-var templates = require('./lib/templates.js');
+var jade = require('jade');
 var app = express();
 var bodyParser = require("body-parser");
 var child_process = require("child_process");
 var path = require('path');
-var templater = templates();
 var shortId = require('shortid');
 
 var CONFIG = require("./config");
 
+function renderHTML(){
+    var data = {CONFIG: CONFIG}
+    var html = jade.renderFile("views/home.jade",data);
+    fs.writeFile("../www/index.html",html,function(){
+	console.log("Done rendering index.html");
+    });
+}
+
+renderHTML();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/",function(req,res){
-    var data = {CONFIG: CONFIG}
-    var template = templater.get("views/home.jade", data)
-    
-    res.send(template.run());
+    res.send("Welcome to the doxygit API !")
 });
 
 app.post("/newdoc",function(req,res){
@@ -30,7 +36,6 @@ app.post("/newdoc",function(req,res){
     } else {
         res.send("fail");
     }
-    
     function success(shortId){
         //change location in header and serve html directly?
         redirect_url = CONFIG.staticURL;

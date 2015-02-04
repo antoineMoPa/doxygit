@@ -25,7 +25,8 @@ body
             | Your documentation online in a click
           span.happy-face
             | :D
-        form(accept-charset='UTF-8', action='/newdoc', method='post')
+        - newdocURL = CONFIG.nodeURL + '/newdoc'
+        form(accept-charset='UTF-8', action=newdocURL, method='post')
           div(style='margin: 0; padding: 0; display: inline;')
             input(name='utf8', type='hidden', value='✓')
             input(name='authenticity_token', type='hidden', value='JfrVPNUWOEPaENPQ9MdoF75phKEjBmzLcJjoxWR9LZA=')
