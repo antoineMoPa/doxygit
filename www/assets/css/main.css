@@ -3,85 +3,73 @@
 h1,h2,h3,h4,h5,h6,p,label{font-family:'Open Sans';}
 
 body {
-  padding: 0;
-  margin: 0;
-  background: #000;
-  background:#000000;
-  color: #fff;
+    padding: 0;
+    margin: 0;
+    background: #3AF;
+    color: #fff;
 }
 
 .header {
-  height: 70px;
-  background: #3AF;
-  border-bottom: 3px solid #225D9F;
+    height: 70px;
+    background: #3AF;
+    border-bottom: 3px solid #225D9F;
 }
 
 .header h3 {
-  line-height: 70px;
-  margin-top: 0;
-  margin-left: 10px;
-  font-size: 30px;
-  font-weight: 700;
-  color:#fff;
-}
-
-.footer {
-  background: #3AF;
-  min-height: 100px;
-  margin-top: 100px;
-  border-top: 3px solid #225D9F;
+    line-height: 70px;
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 30px;
+    font-weight: 700;
+    color:#fff;
 }
 
 .home {
-  text-align: center;
-  color:#fff;
+    text-align: center;
+    padding-bottom: 50px;
+    background: #000;
+    color: #fff;
 }
 
 .home .punch-line {
-  display: inline-block;
-  transform: rotate(-2deg);
-  font-size: 40px;
-  font-weight: 700;
-  margin-top: 100px;
-  border: 8px solid #ccc;
-  padding: 10px;
+    display: inline-block;
+    transform: rotate(-2deg);
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 100px;
+    border: 8px solid #ccc;
+    padding: 10px;
 }
-.home .punch-line .happy-face {
-  transition: 0.3s;
-}
-.home .punch-line .happy-face:hover {
-  display: inline-block;
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
+
 .home form {
-  width: 400px;
-  margin: auto;
-  margin-top: 100px;
-  text-align: left;
+    width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    text-align: left;
 }
+
 .home form .repo-input-validation-icon {
-  float: right;
-  margin-top: -24px;
-  margin-right: 5px;
-  font-family: FontAwesome;
+    float: right;
+    margin-top: -24px;
+    margin-right: 5px;
+    font-family: FontAwesome;
 }
+
 .home form .get-doc-cont {
-  width: 200px;
-  text-align: center;
-  margin: auto;
-  transition: 0.2s;
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    transition: 0.2s;
 }
+
 .home form .get-doc-cont .get-doc {
-  font-size: 20px;
-  vertical-align: middle;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  padding: 20px;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 20px;
 }
+
 .home form .get-doc-cont:hover {
-  transform: scaleX(1.03) scaleY(1.03);
+    transform: scaleX(1.03) scaleY(1.03);
 }
-
-/* HOME */
-

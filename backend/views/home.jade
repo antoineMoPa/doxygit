@@ -1,16 +1,15 @@
-- staticURL = CONFIG.staticURL
 doctype html
 head
   link(
       rel="stylesheet" 
       type="text/css" 
-      href=staticURL+"/assets/css/ui-general.css"
+      href="/assets/css/ui-general.css"
   )
 
   link(
       rel="stylesheet" 
       type="text/css" 
-      href=staticURL+"/assets/css/main.css"
+      href="/assets/css/main.css"
   )
 
   title Doxygit
@@ -27,9 +26,7 @@ body
         h2.punch-line
           span
             | Your documentation online in a click
-          span.happy-face
-            | :D
-        - newdocURL = CONFIG.nodeURL + '/newdoc'
+         - newdocURL = '/newdoc'
         form(accept-charset='UTF-8', action=newdocURL, method='post')
           div(style='margin: 0; padding: 0; display: inline;')
           .form-group
@@ -37,10 +34,10 @@ body
               | Enter a git repo url
             .repo-input-group
               .bookie
-                img.bookie(src = staticURL+"/assets/images/bookie-black-bg.svg")
+                img.bookie(src = "/assets/images/bookie-black-bg.svg")
                 input.form-control.repo-input(name='repositoryURL', placeholder='git@github.com:AntoineMoPa/doxygit.git')
               i.repo-input-validation-icon.fa
             .get-doc-cont
               button.btn.btn-primary.get-doc
                 | Build documentation
-    .footer
+
